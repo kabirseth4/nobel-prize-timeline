@@ -10,13 +10,19 @@ import {
 } from "@mui/material";
 import type { Prize } from "../types/nobel";
 import { CATEGORY_COLORS, CATEGORY_LABELS } from "../types/nobel";
+import { highlightText } from "../utils/highlightText";
 
 interface PrizeCardProps {
   prize: Prize;
   onClose: () => void;
+  searchQuery?: string;
 }
 
-export const PrizeCard = ({ prize, onClose }: PrizeCardProps) => {
+export const PrizeCard = ({
+  prize,
+  onClose,
+  searchQuery = "",
+}: PrizeCardProps) => {
   const categoryColor = CATEGORY_COLORS[prize.category] || "#666";
   const categoryLabel = CATEGORY_LABELS[prize.category] || prize.category;
 
@@ -71,7 +77,10 @@ export const PrizeCard = ({ prize, onClose }: PrizeCardProps) => {
             {prize.laureates.map((laureate) => (
               <Box key={laureate.id} sx={{ mb: 2 }}>
                 <Typography variant="subtitle1" fontWeight="bold">
-                  {`${laureate.firstname} ${laureate.surname || ""}`.trim()}
+                  {highlightText(
+                    `${laureate.firstname} ${laureate.surname || ""}`.trim(),
+                    searchQuery
+                  )}
                   {laureate.share !== "1" && (
                     <Typography
                       component="span"
@@ -89,7 +98,7 @@ export const PrizeCard = ({ prize, onClose }: PrizeCardProps) => {
                     color="text.secondary"
                     sx={{ fontStyle: "italic", mt: 0.5 }}
                   >
-                    {laureate.motivation}
+                    {highlightText(laureate.motivation, searchQuery)}
                   </Typography>
                 )}
               </Box>
@@ -117,7 +126,7 @@ export const PrizeCard = ({ prize, onClose }: PrizeCardProps) => {
               color="text.secondary"
               sx={{ fontStyle: "italic" }}
             >
-              "{prize.overallMotivation}"
+              "{highlightText(prize.overallMotivation, searchQuery)}"
             </Typography>
           </Box>
         )}

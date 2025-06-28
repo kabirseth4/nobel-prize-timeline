@@ -6,9 +6,10 @@ import { PrizeCard } from "./PrizeCard";
 
 interface TimelineProps {
   prizes: Prize[];
+  searchQuery?: string;
 }
 
-export const Timeline = ({ prizes }: TimelineProps) => {
+export const Timeline = ({ prizes, searchQuery = "" }: TimelineProps) => {
   const [selectedPrize, setSelectedPrize] = useState<Prize | null>(null);
 
   if (prizes.length === 0) {
@@ -187,6 +188,7 @@ export const Timeline = ({ prizes }: TimelineProps) => {
             <PrizeCard
               prize={selectedPrize}
               onClose={() => setSelectedPrize(null)}
+              searchQuery={searchQuery}
             />
           </Box>
         </Backdrop>

@@ -173,7 +173,7 @@ export const App = () => {
         <CategoryDistribution prizes={filteredPrizes} />
 
         {/* Timeline */}
-        <Timeline prizes={filteredPrizes} />
+        <Timeline prizes={filteredPrizes} searchQuery={searchQuery} />
       </Container>
     </Box>
   );
