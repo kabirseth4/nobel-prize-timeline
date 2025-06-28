@@ -109,7 +109,7 @@ export const App = () => {
       <AppBar position="static" sx={{ mb: 3 }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Nobel Prize Timeline Explorer
+            Nobel Prize Explorer
           </Typography>
         </Toolbar>
       </AppBar>
