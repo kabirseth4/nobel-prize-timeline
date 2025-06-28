@@ -1,5 +1,6 @@
 import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Timeline } from "./components/Timeline";
 import type { Prize } from "./types/nobel";
 import { loadNobelData } from "./utils/dataUtils";
 
@@ -48,10 +49,16 @@ export const App = () => {
       </AppBar>
 
       <Container maxWidth="xl">
-        <Typography variant="body1">
-          Loaded {prizes.length} Nobel Prizes from{" "}
-          {new Set(prizes.map((p) => p.year)).size} years
-        </Typography>
+        {/* Statistics */}
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body2" color="text.secondary">
+            Showing {prizes.length} Nobel Prizes from{" "}
+            {new Set(prizes.map((p) => p.year)).size} years
+          </Typography>
+        </Box>
+
+        {/* Timeline */}
+        <Timeline prizes={prizes} />
       </Container>
     </Box>
   );
