@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
+import { CategoryDistribution } from "./components/CategoryDistribution";
 import { Timeline } from "./components/Timeline";
 import {
   CATEGORIES,
@@ -167,6 +168,9 @@ export const App = () => {
             {new Set(filteredPrizes.map((p) => p.year)).size} years
           </Typography>
         </Box>
+
+        {/* Category Distribution */}
+        <CategoryDistribution prizes={filteredPrizes} />
 
         {/* Timeline */}
         <Timeline prizes={filteredPrizes} />
