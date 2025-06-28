@@ -8,7 +8,7 @@ export interface Laureate {
 
 export interface Prize {
   year: string;
-  category: string;
+  category: Category;
   laureates?: Laureate[];
   overallMotivation?: string;
 }
